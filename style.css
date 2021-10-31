@@ -114,7 +114,6 @@ body{
 
 .key:active{
     transform:scale(95%);
-    background-color: rgb(82, 82, 82);
     color: white;
     box-shadow: none;
 }
