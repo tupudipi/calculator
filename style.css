@@ -1,7 +1,12 @@
 *{
     box-sizing: border-box;
-    font-family: monospace;
+    font-family: sans-serif;
 }
+
+@font-face {
+    font-family: calculator;
+    src: url(DSEG14Classic-Regular.woff);
+ }
 
 body{
     height: 100vh;
@@ -55,6 +60,7 @@ body{
     margin: 0;
     padding: 0;
     height: 50%;
+    font-family: calculator;
 }
 
 .keys{
