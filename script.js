@@ -38,6 +38,12 @@ function operate(operator, a, b){
     }
 }
 
+let currentKey = document.getElementById("curr");
+let prev = document.getElementById("prev");
+let allOpperations = ['/', '*', '-', '+', '%', '^'];
+let selectedOpp = ''; 
+let firstOpperand, secondOpperand;
+
 let keys = Array.from(document.querySelectorAll('.key'));
 keys.forEach(key => key.addEventListener('click', check));
 
@@ -45,10 +51,20 @@ window.addEventListener('keydown', checkKey);
 
 function check(e){
     console.log(e.target.id)
+    if(allOpperations.includes(e.target.id)){
+        prev.innerText += currentKey.innerText + e.target.id;
+        selectedOpp = e.target.id;
+        firstOpperand = currentKey.innerText;
+        alert(`${firstOpperand} ${selectedOpp}`);
+    }else{
+        currentKey.innerText += e.target.id;
+    }
+    
 }
 
 function checkKey(e){
     let key = document.querySelector(`div[data-key="${e.keyCode}"]`);
     console.log(key.id);
+    currentKey.innerText = e.target.id;
 }
 
