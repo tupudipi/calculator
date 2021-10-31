@@ -37,3 +37,18 @@ function operate(operator, a, b){
             break;
     }
 }
+
+let keys = Array.from(document.querySelectorAll('.key'));
+keys.forEach(key => key.addEventListener('click', check));
+
+window.addEventListener('keydown', checkKey);
+
+function check(e){
+    console.log(e.target.id)
+}
+
+function checkKey(e){
+    let key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    console.log(key.id);
+}
+
