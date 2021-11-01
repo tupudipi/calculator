@@ -44,15 +44,43 @@ let allOpperations = ['/', '*', '-', '+', '%', '^'];
 let selectedOpp = ''; 
 let firstOpperand, secondOpperand;
 
+window.addEventListener('keydown', checkKey);
 let keys = Array.from(document.querySelectorAll('.key'));
 keys.forEach(key => key.addEventListener('click', check));
 
-window.addEventListener('keydown', checkKey);
+let opperating = false;
 
 function check(e){
-    let opperating = false;
     let pressedKey = e.target.id;
     console.log (pressedKey);
+
+    if(opperating){
+        if(pressedKey == 'ac')
+        {
+            currentOpperationDisplay.innerText = '';
+            prevOpperationDisplay.innerText = '';
+            selectedOpp = '';
+            
+        }
+        else if(pressedKey == 'c')
+        {
+            let str = currentOpperationDisplay.innerText;
+            str = str.substring(0, str.length-1);
+            currentOpperationDisplay.innerText = str;
+        }
+        else if(pressedKey == '=')
+        {
+            prevOpperationDisplay.innerText += pressedKey;
+            console.log(prevOpperationDisplay.innerText);
+            currentOpperationDisplay.innerText = operate(selectedOpp, +firstOpperand, +secondOpperand);
+        }
+        else {
+            currentOpperationDisplay.innerText += pressedKey;
+            prevOpperationDisplay.innerText += pressedKey;
+            secondOpperand=pressedKey;
+            console.log(firstOpperand, selectedOpp, secondOpperand);
+        }
+    }
 
     if(!opperating)
     {
@@ -80,12 +108,6 @@ function check(e){
         else {
             currentOpperationDisplay.innerText += pressedKey;
         }
-    }
-
-    if(opperating){
-        keys.forEach(key => key.addEventListener('click', readSecondOpperand));
-        alert(`OPERATING:
-        ${firstOpperand} ${selectedOpp}`)
     }
 }
 
