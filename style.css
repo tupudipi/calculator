@@ -45,6 +45,7 @@ body{
     flex-direction: column;
     padding: 20px;
     text-align: end;
+    overflow: hidden;
 }
 
 .prev{
@@ -52,6 +53,7 @@ body{
     margin: 0;
     padding: 0;
     height: 50%;
+    overflow: hidden;
 }
 
 .curr{
@@ -61,6 +63,7 @@ body{
     padding: 0;
     height: 50%;
     font-family: calculator;
+    overflow: hidden;
 }
 
 .keys{
@@ -83,8 +86,15 @@ body{
     font-size: xx-large;
     transition-duration: 50ms;
     transition-timing-function: ease-out;
-    box-shadow: 2px 2px 2px rgb(90, 90, 90);
     cursor: pointer;
+    -webkit-box-shadow: inset 0 0 10px rgb(80, 80, 80), 2px 2px 2px rgb(90, 90, 90);
+    -moz-box-shadow: inset 0 0 10px rgb(80, 80, 80), 2px 2px 2px rgb(90, 90, 90);
+    box-shadow: inset 0 0 10px rgb(80, 80, 80), 2px 2px 2px rgb(90, 90, 90);
+}
+
+.key:hover{
+    transform: translate(0, -4px)  scale(102%);
+    box-shadow: inset 0 0 6px rgb(80, 80, 80), 3px 3px 3px rgb(71, 71, 71);
 }
 
 .key > p {
@@ -93,6 +103,13 @@ body{
 
 .number{
     background-color: rgb(65, 65, 65);
+    -webkit-box-shadow: inset 0 0 10px rgb(55, 55, 55), 2px 2px 2px rgb(90, 90, 90);
+    -moz-box-shadow: inset 0 0 10px rgb(55, 55, 55), 2px 2px 2px rgb(90, 90, 90);
+    box-shadow: inset 0 0 10px rgb(55, 55, 55), 2px 2px 2px rgb(90, 90, 90);
+}
+
+.number:hover{
+    box-shadow: inset 0 0 6px rgb(55, 55, 55), 3px 3px 3px rgb(71, 71, 71);
 }
 
 .result{
@@ -107,13 +124,11 @@ body{
     background-color: rgb(184,107,91) ;
 }
 
-.key:hover{
-    transform: translate(0, -4px)  scale(102%);
-    box-shadow: 3px 3px 3px rgb(71, 71, 71);
-}
-
 .key:active{
     transform:scale(95%);
     color: white;
     box-shadow: none;
+    -webkit-box-shadow: inset 0 0 15px rgb(255, 255, 255);
+    -moz-box-shadow: inset 0 0 15px rgb(255, 255, 255);
+    box-shadow: inset 0 0 15px rgb(255, 255, 255);
 }

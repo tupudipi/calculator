@@ -38,8 +38,8 @@ function operate(operator, a, b){
     }
 }
 
-let currentKey = document.getElementById("curr");
-let prev = document.getElementById("prev");
+let currentOpperationDisplay = document.getElementById("curr");
+let prevOpperationDisplay = document.getElementById("prev");
 let allOpperations = ['/', '*', '-', '+', '%', '^'];
 let selectedOpp = ''; 
 let firstOpperand, secondOpperand;
@@ -50,21 +50,51 @@ keys.forEach(key => key.addEventListener('click', check));
 window.addEventListener('keydown', checkKey);
 
 function check(e){
-    console.log(e.target.id)
-    if(allOpperations.includes(e.target.id)){
-        prev.innerText += currentKey.innerText + e.target.id;
-        selectedOpp = e.target.id;
-        firstOpperand = currentKey.innerText;
-        alert(`${firstOpperand} ${selectedOpp}`);
-    }else{
-        currentKey.innerText += e.target.id;
+    let opperating = false;
+    let pressedKey = e.target.id;
+    console.log (pressedKey);
+
+    if(!opperating)
+    {
+        if (allOpperations.includes(pressedKey)){
+            firstOpperand = currentOpperationDisplay.innerText;
+            selectedOpp = pressedKey;
+            prevOpperationDisplay.innerText = (firstOpperand + selectedOpp);
+            currentOpperationDisplay.innerText = "";
+            opperating = true;
+        } 
+        else if(pressedKey == 'ac')
+        {
+            currentOpperationDisplay.innerText = '';
+            prevOpperationDisplay.innerText = '';
+            firstOpperand = null;
+            secondOpperand = null;
+            selectedOpp = '';
+        }
+        else if(pressedKey == 'c')
+        {
+            let str = currentOpperationDisplay.innerText;
+            str = str.substring(0, str.length-1);
+            currentOpperationDisplay.innerText = str;
+        }
+        else {
+            currentOpperationDisplay.innerText += pressedKey;
+        }
     }
-    
+
+    if(opperating){
+        keys.forEach(key => key.addEventListener('click', readSecondOpperand));
+        alert(`OPERATING:
+        ${firstOpperand} ${selectedOpp}`)
+    }
+}
+
+function readSecondOpperand(e){
+    return e.target.id;
 }
 
 function checkKey(e){
     let key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    console.log(key.id);
-    currentKey.innerText = e.target.id;
+    let pressedKey = e.target.id;
 }
 
