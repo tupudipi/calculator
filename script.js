@@ -1,19 +1,18 @@
 function operate(operator, a, b){
     switch (operator){
         case '+':
-            return (a+b).toFixed(2);
-            break;
+            return +(Math.round((a+b) + "e+2")  + "e-2");
         case '-':
-            return (a-b).toFixed(2);
+            return +(Math.round((a-b) + "e+2")  + "e-2");
             break;
         case '*':
-            return (a*b).toFixed(2);
+            return +(Math.round((a*b) + "e+2")  + "e-2");
             break;
         case '/':
-            return (a/b).toFixed(2);
+            return +(Math.round((a/b) + "e+2")  + "e-2");
             break;
         case '^':
-            return (a**b).toFixed(2);
+            return +(Math.round((a**b) + "e+2")  + "e-2");
             break;
     }
 }
