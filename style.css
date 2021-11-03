@@ -63,7 +63,6 @@ body{
     padding: 0;
     height: 50%;
     font-family: calculator;
-    overflow: hidden;
 }
 
 .keys{
